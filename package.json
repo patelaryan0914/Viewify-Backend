@@ -1,15 +1,11 @@
 {
-  "name": "server",
+  "name": "project-1",
   "version": "1.0.0",
-  "description": "Backend Self-Learning",
+  "description": "backend Javascript",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "backend",
-    "javascript"
-  ],
   "author": "Aryan Patel",
   "license": "ISC"
 }
