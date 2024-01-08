@@ -14,11 +14,11 @@ const videoSchema = Schema(
       type: String,
       required: true,
     },
-    desciption: {
+    description: {
       type: String,
       required: true,
     },
-    time: {
+    duration: {
       type: Number,
       required: true,
     },
@@ -34,6 +34,10 @@ const videoSchema = Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    // publicId: {
+    //   type: String,
+    //   required: true,
+    // },
   },
   { timestamps: true }
 );
