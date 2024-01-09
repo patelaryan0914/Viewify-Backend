@@ -28,7 +28,7 @@ const getUserTweets = asyncHandler(async (req, res) => {
   // TODO: get user tweets
   const { userId } = req.params;
 
-  if (!userId || userId.length !== 24) {
+  if (!isValidObjectId(tweetId)) {
     throw new ApiError(400, "UserID is missing or corrupted");
   }
 
@@ -48,7 +48,7 @@ const updateTweet = asyncHandler(async (req, res) => {
   const { tweetId } = req.params;
   const { content } = req.body;
 
-  if (!tweetId || tweetId.length !== 24) {
+  if (!isValidObjectId(tweetId)) {
     throw new ApiError(400, "TweetId is missing or corrupted");
   }
 
@@ -75,7 +75,7 @@ const deleteTweet = asyncHandler(async (req, res) => {
   //TODO: delete tweet
   const { tweetId } = req.params;
 
-  if (!tweetId || tweetId.length !== 24) {
+  if (!isValidObjectId(tweetId)) {
     throw new ApiError(400, "TweetId is missing or corrupted");
   }
 
