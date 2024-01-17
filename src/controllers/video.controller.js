@@ -32,15 +32,14 @@ const publishAVideo = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Thumbnail file is required");
   }
   const videoUpload = await Video.create({
-    videoFile: video?.url,
-    thumbnail: thumbnail?.url,
+    videoFile: { url: video?.url, public_id: video?.public_id },
+    thumbnail: { thumbnail: thumbnail?.url, public_id: thumbnail?.public_id },
     owner: ownerId,
     title,
     description,
     duration: video?.duration,
     views: 0,
     isPublished: false,
-    // publicId: video?.public_id, ==>>Future Work
   });
   if (!videoUpload) {
     throw new ApiError(500, "Something Went Wrong While uploading Video");
@@ -61,10 +60,12 @@ const getVideoById = asyncHandler(async (req, res) => {
   if (!getVideo) {
     throw new ApiError(500, "Something Went Wrong While Fetching Video");
   }
-
+  const updateView = await Video.findByIdAndUpdate(videoId, {
+    $set: { views: getVideo.views + 1 },
+  });
   return res
     .status(200)
-    .json(new ApiResponse(200, getVideo, "Video Fetched Succesfully"));
+    .json(new ApiResponse(200, updateView, "Video Fetched Succesfully"));
 });
 
 const updateVideo = asyncHandler(async (req, res) => {
