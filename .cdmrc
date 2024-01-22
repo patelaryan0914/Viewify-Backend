@@ -1,0 +1,10 @@
+# terminals
+terminals:
+    [
+        'npm run dev'
+        'echo "We''re ready"',
+    ]
+# other config
+tabs: ['README.md']
+run-button: clear && node $$file
+browser-link: https://wikipedia.org
